@@ -4,7 +4,10 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { GoogleGenAI, Type } from '@google/genai';
 
+// Load .env first, then .env.local on top (matches the Vite convention used in this project;
+// .env.local is git-ignored and is where a real GEMINI_API_KEY should go for local dev).
 dotenv.config();
+dotenv.config({ path: '.env.local', override: true });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
