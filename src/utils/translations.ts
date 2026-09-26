@@ -9,10 +9,6 @@ export const t = {
     hi: 'आशा साथी',
     en: 'ASHA Saathi',
   },
-  byLine: {
-    hi: 'माँस डॉक्टर द्वारा',
-    en: 'by Maas Doc',
-  },
   prototypeBanner: {
     hi: 'डेमो केवल • काल्पनिक डेटा • निर्णय सहायता प्रणाली • वास्तविक नैदानिक निर्णय केवल डॉक्टर लेते हैं',
     en: 'Simulation with synthetic data • Decision support only • Doctor makes clinical decisions',

@@ -61,9 +61,6 @@ export const TopBar: React.FC = () => {
               <span className="font-heading font-bold text-lg sm:text-xl tracking-tight text-white">
                 {language === 'hi' ? 'आशा साथी' : 'ASHA Saathi'}
               </span>
-              <span className="text-[11px] font-semibold tracking-wider uppercase bg-white/10 text-white/90 px-2 py-0.5 rounded-full border border-white/15">
-                by Maas Doc
-              </span>
             </div>
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-1 text-[11px] text-amber-300 font-medium">
