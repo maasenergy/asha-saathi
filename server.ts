@@ -39,23 +39,31 @@ if (apiKey) {
   }
 }
 
-// Helper for retry on transient Gemini errors
-async function callGeminiWithRetry<T>(fn: () => Promise<T>, retries = 3, delayMs = 1200): Promise<T> {
+// Helper for retry on transient Gemini errors.
+// The @google/genai SDK's ApiError.status is the numeric HTTP status code (e.g. 503, 429),
+// not the string "UNAVAILABLE" — that string only appears (maybe) inside the JSON-stringified
+// message body. Check the numeric status directly so this doesn't depend on message formatting.
+async function callGeminiWithRetry<T>(fn: () => Promise<T>, retries = 4, delayMs = 1500): Promise<T> {
   let lastError: any;
   for (let i = 0; i < retries; i++) {
     try {
       return await fn();
     } catch (err: any) {
       lastError = err;
+      const numericStatus = Number(err?.status ?? err?.code);
       const errStr = String(err?.message || err);
       const isTransient =
-        err?.status === 'UNAVAILABLE' ||
+        numericStatus === 429 ||
+        numericStatus === 503 ||
+        (numericStatus >= 500 && numericStatus < 600) ||
+        errStr.includes('UNAVAILABLE') ||
         errStr.includes('503') ||
-        errStr.includes('high demand') ||
         errStr.includes('429') ||
+        errStr.includes('high demand') ||
+        errStr.includes('overloaded') ||
         errStr.includes('Resource has been exhausted');
       if (isTransient && i < retries - 1) {
-        console.warn(`Gemini API transient failure (attempt ${i + 1}/${retries}). Retrying in ${delayMs * (i + 1)}ms...`);
+        console.warn(`Gemini API transient failure (attempt ${i + 1}/${retries}, status ${numericStatus || 'unknown'}). Retrying in ${delayMs * (i + 1)}ms...`);
         await new Promise((resolve) => setTimeout(resolve, delayMs * (i + 1)));
       } else {
         throw err;
