@@ -193,9 +193,9 @@ export const MotherSelfInputsCard: React.FC<MotherSelfInputsCardProps> = ({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {/* SECTION 1: DAILY KICK COUNTER WITH 2-HOUR TIMER */}
-      <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-200 space-y-4">
+      <div className="bg-white rounded-xl p-4 border border-slate-200 space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-9 h-9 rounded-2xl bg-rose-100 text-[#B0306A] flex items-center justify-center">
@@ -271,7 +271,7 @@ export const MotherSelfInputsCard: React.FC<MotherSelfInputsCardProps> = ({
       </div>
 
       {/* SECTION 2: DAILY MOOD (5 EMOJI FACES) */}
-      <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-200 space-y-3">
+      <div className="bg-white rounded-xl p-4 border border-slate-200 space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Smile className="w-5 h-5 text-amber-500" />
@@ -315,7 +315,7 @@ export const MotherSelfInputsCard: React.FC<MotherSelfInputsCardProps> = ({
       </div>
 
       {/* SECTION 3: FOOD TODAY (MEALS + PROTEIN FOODS) */}
-      <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-200 space-y-3">
+      <div className="bg-white rounded-xl p-4 border border-slate-200 space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Utensils className="w-5 h-5 text-emerald-600" />
@@ -377,7 +377,7 @@ export const MotherSelfInputsCard: React.FC<MotherSelfInputsCardProps> = ({
       </div>
 
       {/* SECTION 4: VOMITING TODAY */}
-      <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-200 space-y-3">
+      <div className="bg-white rounded-xl p-4 border border-slate-200 space-y-3">
         <div className="flex items-center gap-2">
           <Droplet className="w-5 h-5 text-indigo-500" />
           <h3 className="text-base font-bold font-heading text-[#1E2A4A]">
@@ -410,7 +410,7 @@ export const MotherSelfInputsCard: React.FC<MotherSelfInputsCardProps> = ({
       </div>
 
       {/* SECTION 5: OPTIONAL HOME SCALE / BP MACHINE */}
-      <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-200 space-y-3">
+      <div className="bg-white rounded-xl p-4 border border-slate-200 space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Scale className="w-5 h-5 text-blue-600" />

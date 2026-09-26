@@ -120,6 +120,9 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
   const [supportPersonName, setSupportPersonName] = useState(existingProfile?.supportPersonName || '');
   const [supportPersonPhone, setSupportPersonPhone] = useState(existingProfile?.supportPersonPhone || '');
 
+  const formatYesNo = (value: boolean) =>
+    language === 'hi' ? (value ? 'हाँ' : 'नहीं') : (value ? 'Yes' : 'No');
+
   if (!isOpen) return null;
 
   // Real-time calculation of Weeks and EDD
@@ -341,7 +344,10 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
           {currentStep === 1 && (
             <div className="space-y-4">
               <div className="p-3 bg-blue-50/70 rounded-2xl border border-blue-200 text-xs text-blue-900 font-medium">
-                💡 <strong>निर्देश:</strong> माता की बुनियादी जानकारी और LMP (अंतिम माहवारी तिथि) भरें। ऐप स्वतः गर्भ के सप्ताह और प्रसव की संभावित तारीख (EDD) की गणना करेगा।
+                💡 <strong>{language === 'hi' ? 'निर्देश:' : 'Instructions:'}</strong>{' '}
+                {language === 'hi'
+                  ? 'माता की बुनियादी जानकारी और LMP (अंतिम माहवारी तिथि) भरें। ऐप स्वतः गर्भ के सप्ताह और प्रसव की संभावित तारीख (EDD) की गणना करेगा।'
+                  : 'Enter the mother’s basic details and LMP. The app will calculate gestational age and estimated due date (EDD).'}
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -506,7 +512,10 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
           {currentStep === 2 && (
             <div className="space-y-4">
               <div className="p-3 bg-blue-50/70 rounded-2xl border border-blue-200 text-xs text-blue-900 font-medium">
-                💡 <strong>निर्देश:</strong> पिछले प्रसवों की संख्या (Gravida/Para) और जटिलताओं (जैसे पिछला सिजेरियन या PPH) के हाँ/ना बटन पर क्लिक करें।
+                💡 <strong>{language === 'hi' ? 'निर्देश:' : 'Instructions:'}</strong>{' '}
+                {language === 'hi'
+                  ? 'पिछले प्रसवों की संख्या (Gravida/Para) और जटिलताओं (जैसे पिछला सिजेरियन या PPH) के हाँ/ना बटन पर क्लिक करें।'
+                  : 'Enter gravidity/para and use Yes/No to record past pregnancy complications, such as a previous C-section or PPH.'}
               </div>
 
               <div className="grid grid-cols-2 gap-3">
@@ -679,7 +688,10 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
           {currentStep === 3 && (
             <div className="space-y-4">
               <div className="p-3 bg-blue-50/70 rounded-2xl border border-blue-200 text-xs text-blue-900 font-medium">
-                💡 <strong>निर्देश:</strong> माता व पिता का रक्त समूह (Rh फैक्टर सहित) तथा अन्य चिकित्सीय स्थितियाँ (मधुमेह, थायराइड, हृदय रोग आदि) चुनें।
+                💡 <strong>{language === 'hi' ? 'निर्देश:' : 'Instructions:'}</strong>{' '}
+                {language === 'hi'
+                  ? 'माता व पिता का रक्त समूह (Rh फैक्टर सहित) तथा अन्य चिकित्सीय स्थितियाँ (मधुमेह, थायराइड, हृदय रोग आदि) चुनें।'
+                  : 'Select maternal and paternal blood groups (including Rh factor) and any medical conditions, such as diabetes, thyroid disease, or heart disease.'}
               </div>
 
               {/* Blood Groups: Mother & Father */}
@@ -756,7 +768,7 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
                     }`}
                   >
                     <span>{language === 'hi' ? 'मधुमेह (Diabetes)' : 'Diabetes'}</span>
-                    <span className="text-[11px]">{diabetesStatus !== 'none' ? 'हाँ' : 'नहीं'}</span>
+                    <span className="text-[11px]">{formatYesNo(diabetesStatus !== 'none')}</span>
                   </button>
 
                   {/* Thyroid */}
@@ -770,7 +782,7 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
                     }`}
                   >
                     <span>{language === 'hi' ? 'थायराइड (Thyroid)' : 'Thyroid'}</span>
-                    <span className="text-[11px]">{hasThyroid ? 'हाँ' : 'नहीं'}</span>
+                    <span className="text-[11px]">{formatYesNo(hasThyroid)}</span>
                   </button>
 
                   {/* Heart Disease */}
@@ -784,7 +796,7 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
                     }`}
                   >
                     <span>{language === 'hi' ? 'हृदय रोग (Heart Disease)' : 'Heart Disease'}</span>
-                    <span className="text-[11px]">{hasHeartDisease ? 'हाँ' : 'नहीं'}</span>
+                    <span className="text-[11px]">{formatYesNo(hasHeartDisease)}</span>
                   </button>
 
                   {/* Epilepsy */}
@@ -798,7 +810,7 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
                     }`}
                   >
                     <span>{language === 'hi' ? 'मिर्गी / दौरे (Epilepsy)' : 'Epilepsy'}</span>
-                    <span className="text-[11px]">{hasEpilepsy ? 'हाँ' : 'नहीं'}</span>
+                    <span className="text-[11px]">{formatYesNo(hasEpilepsy)}</span>
                   </button>
 
                   {/* TB */}
@@ -812,7 +824,7 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
                     }`}
                   >
                     <span>{language === 'hi' ? 'टीबी (Tuberculosis)' : 'TB'}</span>
-                    <span className="text-[11px]">{hasTb ? 'हाँ' : 'नहीं'}</span>
+                    <span className="text-[11px]">{formatYesNo(hasTb)}</span>
                   </button>
 
                   {/* Sickle Cell */}
@@ -826,7 +838,7 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
                     }`}
                   >
                     <span>{language === 'hi' ? 'सिकल सेल (Sickle Cell)' : 'Sickle Cell'}</span>
-                    <span className="text-[11px]">{hasSickleCell ? 'हाँ' : 'नहीं'}</span>
+                    <span className="text-[11px]">{formatYesNo(hasSickleCell)}</span>
                   </button>
 
                   {/* Twins */}
@@ -840,7 +852,7 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
                     }`}
                   >
                     <span>{language === 'hi' ? 'जुड़वां बच्चे (Twins on USG)' : 'Twins (Ultrasound)'}</span>
-                    <span className="text-[11px]">{hasTwins ? 'हाँ' : 'नहीं'}</span>
+                    <span className="text-[11px]">{formatYesNo(hasTwins)}</span>
                   </button>
 
                   {/* Pre-eclampsia Risk */}
@@ -854,7 +866,7 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
                     }`}
                   >
                     <span>{language === 'hi' ? 'प्री-एक्लेम्पसिया जोखिम' : 'Pre-eclampsia Risk'}</span>
-                    <span className="text-[11px]">{hasPreEclampsiaRisk ? 'हाँ' : 'नहीं'}</span>
+                    <span className="text-[11px]">{formatYesNo(hasPreEclampsiaRisk)}</span>
                   </button>
                 </div>
               </div>
@@ -865,7 +877,10 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
           {currentStep === 4 && (
             <div className="space-y-4">
               <div className="p-3 bg-blue-50/70 rounded-2xl border border-blue-200 text-xs text-blue-900 font-medium">
-                💡 <strong>निर्देश:</strong> तंबाकू/मिश्री सेवन, अस्पताल पहुँचने का यात्रा समय, परिवहन उपलब्धता और आपातकालीन संपर्क व्यक्ति की जानकारी भरें।
+                💡 <strong>{language === 'hi' ? 'निर्देश:' : 'Instructions:'}</strong>{' '}
+                {language === 'hi'
+                  ? 'तंबाकू/मिश्री सेवन, अस्पताल पहुँचने का यात्रा समय, परिवहन उपलब्धता और आपातकालीन संपर्क व्यक्ति की जानकारी भरें।'
+                  : 'Record tobacco or mishri use, travel time to the hospital, transport availability, and emergency contact details.'}
               </div>
 
               {/* Tobacco / Mishri */}

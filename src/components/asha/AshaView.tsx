@@ -594,7 +594,7 @@ export const AshaView: React.FC = () => {
   });
 
   return (
-    <div className="max-w-3xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6">
       {/* Exactly 3 Prominent Primary Action Tabs */}
       <div className="bg-white rounded-2xl p-1.5 shadow-sm border border-slate-200/80 mb-5 grid grid-cols-3 gap-1.5">
         <button
@@ -929,7 +929,7 @@ export const AshaView: React.FC = () => {
                           {language === 'hi' ? 'डेमो टेस्ट वाक्य (एक क्लिक में चुनें):' : 'Demo Test Phrases (1-click fill):'}
                         </span>
                         <span className="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-semibold">
-                          सिमुलेशन
+                          {language === 'hi' ? 'सिमुलेशन' : 'Simulation'}
                         </span>
                       </div>
 

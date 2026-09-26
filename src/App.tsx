@@ -17,7 +17,7 @@ function MainContent() {
   const { activeRole, language, resetDemoData, activeMother } = useDemo();
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8F9FC]">
+    <div className="min-h-screen flex flex-col bg-[#F4F7F6]">
       <TopBar />
 
       {/* Main role view area */}

@@ -42,7 +42,7 @@ export const TopBar: React.FC = () => {
   return (
     <header className="sticky top-0 z-50 bg-[#1E2A4A] text-white shadow-md border-b border-white/10">
       {/* Simulation Banner */}
-      <div className="bg-[#B0306A] text-white text-xs py-1 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2">
+      <div className="bg-rose-50 text-rose-900 text-xs py-1 px-4 text-center font-medium flex items-center justify-center gap-2 border-b border-rose-100">
         <Info className="w-3.5 h-3.5 shrink-0" />
         <span>
           {getTranslation('prototypeBanner', language)}
@@ -93,7 +93,7 @@ export const TopBar: React.FC = () => {
             onClick={() => setRole('DOCTOR')}
             className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
               activeRole === 'DOCTOR'
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-[#B0306A] text-white shadow-sm'
                 : 'text-white/70 hover:text-white hover:bg-white/5'
             }`}
           >
@@ -110,7 +110,7 @@ export const TopBar: React.FC = () => {
             onClick={() => setRole('MOTHER')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
               activeRole === 'MOTHER'
-                ? 'bg-purple-600 text-white shadow-sm'
+                ? 'bg-[#B0306A] text-white shadow-sm'
                 : 'text-white/70 hover:text-white hover:bg-white/5'
             }`}
           >

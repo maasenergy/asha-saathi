@@ -63,7 +63,7 @@ export const TodayVisitsTile: React.FC<TodayVisitsTileProps> = ({ onStartVisit }
   return (
     <div className="space-y-4">
       {/* Top Banner & Scan Control */}
-      <div className="bg-gradient-to-r from-[#1E2A4A] via-[#28385e] to-[#B0306A] text-white p-4 sm:p-5 rounded-3xl shadow-sm space-y-3">
+      <div className="bg-[#1E2A4A] text-white p-4 sm:p-5 rounded-2xl shadow-sm space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <div className="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center shadow-inner">

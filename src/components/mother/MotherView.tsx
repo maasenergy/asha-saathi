@@ -106,31 +106,22 @@ export const MotherView: React.FC = () => {
   const kicksToday = mother.dailyKickCount || 8;
 
   return (
-    <div className="max-w-md mx-auto px-3 sm:px-4 py-4 sm:py-6 space-y-5">
+    <div className="max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-6 grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
       {/* Strongest Product Line / Care Circle Banner */}
-      <div className="bg-gradient-to-r from-[#1E2A4A] to-[#B0306A] text-white rounded-2xl p-3.5 shadow-sm border border-white/10">
-        <div className="flex items-start gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-white/15 flex items-center justify-center shrink-0 mt-0.5">
-            <Heart className="w-4 h-4 text-rose-300" />
-          </div>
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-rose-200 block">
-              {language === 'hi' ? 'सुरक्षा चक्र (Connected Care Circle)' : 'Connected Care Circle'}
-            </span>
-            <p className="text-xs sm:text-sm font-semibold text-white/95 mt-0.5 leading-snug">
-              {language === 'hi'
-                ? '“एक माता, एक जुड़ा हुआ सुरक्षा चक्र: उनका अपना ऐप, उनकी आशा, और उनके डॉक्टर—दैनिक स्वास्थ्य से लेकर त्वरित रेफरल तक।”'
-                : '“One mother, one connected care circle: her own app, her ASHA, and her doctor—from daily check-ins through urgent referral and confirmed follow-up.”'}
-            </p>
-          </div>
-        </div>
+      <div className="order-1 lg:col-span-2 flex items-center gap-2 border-b border-slate-200 px-1 pb-3 text-xs text-slate-600">
+        <Heart className="w-4 h-4 shrink-0 text-[#B0306A]" />
+        <p>
+          {language === 'hi'
+            ? 'आपकी आशा दीदी और डॉक्टर आपकी देखभाल टीम का हिस्सा हैं।'
+            : 'Your ASHA and doctor are part of your care team.'}
+        </p>
       </div>
 
       {/* Friendly Mother Welcome Card */}
-      <div className="bg-gradient-to-br from-rose-50 to-purple-50 rounded-3xl p-5 border border-rose-200/70 shadow-sm">
+      <div className="order-2 lg:col-span-2 bg-white rounded-xl p-4 border border-slate-200">
         <div className="flex items-center gap-3.5">
-          <div className="w-14 h-14 rounded-2xl bg-[#B0306A] text-white flex items-center justify-center text-xl font-bold shadow-md">
-            क
+          <div className="w-12 h-12 rounded-xl bg-rose-100 text-[#B0306A] flex items-center justify-center text-xl font-bold">
+            {language === 'hi' ? 'क' : mother.name.charAt(0)}
           </div>
           <div>
             <h1 className="text-xl sm:text-2xl font-bold font-heading text-[#1E2A4A]">
@@ -145,7 +136,7 @@ export const MotherView: React.FC = () => {
         </div>
 
         {/* Expected Due Date and ASHA Info */}
-        <div className="mt-4 pt-3 border-t border-rose-200/60 grid grid-cols-2 gap-2 text-xs">
+        <div className="mt-3 pt-3 border-t border-slate-100 grid grid-cols-2 gap-2 text-xs">
           <div>
             <span className="text-slate-500 block">
               {language === 'hi' ? 'अपेक्षित प्रसव तिथि:' : 'Expected Due Date:'}
@@ -162,9 +153,9 @@ export const MotherView: React.FC = () => {
       </div>
 
       {/* AI Birth Plan Tile for Mother & Family */}
-      <div className="bg-gradient-to-r from-purple-50 via-rose-50 to-amber-50 rounded-3xl p-4 sm:p-5 border border-purple-200/80 shadow-sm flex items-center justify-between gap-3">
+      <div className="order-4 bg-white rounded-xl p-4 border border-slate-200 flex items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-[#B0306A] text-white flex items-center justify-center shrink-0 shadow-md">
+          <div className="w-10 h-10 rounded-xl bg-rose-100 text-[#B0306A] flex items-center justify-center shrink-0">
             <Building2 className="w-6 h-6" />
           </div>
           <div>
@@ -205,10 +196,12 @@ export const MotherView: React.FC = () => {
       </div>
 
       {/* Mother Self-Inputs: Kick counter (2-hr timer), Mood emojis, Food pictures, Vomiting, Home Scale/BP */}
-      <MotherSelfInputsCard patient={mother} language={language} />
+      <div className="order-5 lg:col-span-2">
+        <MotherSelfInputsCard patient={mother} language={language} />
+      </div>
 
       {/* Emergency SOS Section */}
-      <div className="bg-white rounded-3xl p-5 sm:p-6 shadow-md border border-slate-200 text-center">
+      <div className="order-3 bg-white rounded-xl p-4 sm:p-5 border border-red-200 text-center">
         <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">
           {language === 'hi' ? 'आपातकालीन सहायता (Emergency SOS)' : 'Emergency Assistance'}
         </span>
@@ -285,7 +278,7 @@ export const MotherView: React.FC = () => {
                 {motherSosAlert?.address || mother.address}
               </p>
               <div className="pl-5 text-[11px] text-slate-500 flex items-center gap-2">
-                <span>लैंडमार्क: {motherSosAlert?.landmark || mother.landmark}</span>
+                <span>{language === 'hi' ? 'लैंडमार्क:' : 'Landmark:'} {motherSosAlert?.landmark || mother.landmark}</span>
                 <span>• GPS: 19.8762° N, 75.3433° E</span>
               </div>
             </div>
@@ -397,7 +390,7 @@ export const MotherView: React.FC = () => {
       </div>
 
       {/* Mother Saved Address & Landmark Card */}
-      <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-200 space-y-3">
+      <div className="order-8 bg-white rounded-xl p-4 border border-slate-200 space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <MapPin className="w-5 h-5 text-[#B0306A]" />
@@ -434,7 +427,7 @@ export const MotherView: React.FC = () => {
       </div>
 
       {/* Interactive Baby-Movement Check (Fetal Kick Counter) */}
-      <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-200 space-y-3">
+      <div className="order-9 bg-white rounded-xl p-4 border border-slate-200 space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Baby className="w-5 h-5 text-[#B0306A]" />
@@ -481,7 +474,7 @@ export const MotherView: React.FC = () => {
       </div>
 
       {/* Latest Antenatal Visit & Doctor Advice Status */}
-      <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-200 space-y-4">
+      <div className="order-6 bg-white rounded-xl p-4 border border-slate-200 space-y-4">
         <h2 className="text-base sm:text-lg font-bold font-heading text-[#1E2A4A] flex items-center gap-2">
           <HeartPulse className="w-5 h-5 text-[#B0306A]" />
           <span>{language === 'hi' ? 'आशा गृह-भेंट एवं स्वास्थ्य स्थिति' : 'Home-Visit & Health Status'}</span>
@@ -566,15 +559,17 @@ export const MotherView: React.FC = () => {
       </div>
 
       {/* ANC Clinical Tests Tracker for Mother (Done vs Pending) */}
-      <TestsTrackerCard
-        patientId={mother.id}
-        patientName={mother.name}
-        tests={mother.tests || []}
-        allowEdit={false}
-      />
+      <div className="order-7">
+        <TestsTrackerCard
+          patientId={mother.id}
+          patientName={mother.name}
+          tests={mother.tests || []}
+          allowEdit={false}
+        />
+      </div>
 
       {/* Future Roadmap: Optional Pedometer / Wellness Trend */}
-      <div className="bg-slate-50 rounded-3xl p-4 sm:p-5 border border-slate-200 space-y-3">
+      <div className="order-10 bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Footprints className="w-5 h-5 text-indigo-600" />
@@ -612,7 +607,7 @@ export const MotherView: React.FC = () => {
       </div>
 
       {/* Routine Antenatal Guidance from ASHA */}
-      <div className="bg-rose-50/50 rounded-3xl p-4 border border-rose-200/70 text-xs text-slate-600 space-y-1.5">
+      <div className="order-11 lg:col-span-2 bg-rose-50/50 rounded-xl p-4 border border-rose-200/70 text-xs text-slate-600 space-y-1.5">
         <span className="font-bold text-[#1E2A4A] block">
           {language === 'hi' ? 'आशा दीदी के सुझाव:' : 'ASHA Care Tips:'}
         </span>

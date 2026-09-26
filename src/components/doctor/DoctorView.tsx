@@ -466,7 +466,7 @@ export const DoctorView: React.FC = () => {
                   <button
                     onClick={() => resolveSosAlert(sos.id)}
                     className="px-4 py-2 bg-red-900 hover:bg-red-950 text-white text-xs font-bold rounded-xl transition shadow flex items-center gap-1.5"
-                    title="आपातकाल समाप्त और फ़ीड बंद करें"
+                    title={language === 'hi' ? 'आपातकाल समाप्त और फ़ीड बंद करें' : 'Resolve and close emergency'}
                   >
                     <CheckCircle2 className="w-4 h-4 text-emerald-300" />
                     <span>Resolve & Close Emergency</span>
@@ -541,8 +541,8 @@ export const DoctorView: React.FC = () => {
               {[
                 { id: 'ALL', label: `All Mothers (${patients.length})` },
                 { id: 'TREND_AI', label: `Caught by Trend/AI (${patients.filter(isCaughtByTrendOrAi).length})` },
-                { id: 'URGENT', label: `तुरंत आवश्यक (${patients.filter((p) => p.visits.some((v) => v.finalSeverity === 'RED') || p.overallLevel === 'RED').length})` },
-                { id: 'NORMAL', label: 'सामान्य (Normal)' },
+                { id: 'URGENT', label: `${language === 'hi' ? 'तुरंत आवश्यक' : 'Urgent'} (${patients.filter((p) => p.visits.some((v) => v.finalSeverity === 'RED') || p.overallLevel === 'RED').length})` },
+                { id: 'NORMAL', label: language === 'hi' ? 'सामान्य' : 'Normal' },
               ].map((f) => (
                 <button
                   key={f.id}
@@ -853,7 +853,11 @@ export const DoctorView: React.FC = () => {
                                 : 'bg-emerald-100 text-emerald-800'
                             }`}
                           >
-                            {hasRed ? 'तुरंत आवश्यक (Urgent)' : patient.overallLevel === 'AMBER' ? 'ध्यान दें (Attention)' : 'सामान्य (Normal)'}
+                            {hasRed
+                              ? (language === 'hi' ? 'तुरंत आवश्यक' : 'Urgent')
+                              : patient.overallLevel === 'AMBER'
+                              ? (language === 'hi' ? 'ध्यान दें' : 'Attention')
+                              : (language === 'hi' ? 'सामान्य' : 'Normal')}
                           </span>
 
                           {caughtByTrendOrAi && (

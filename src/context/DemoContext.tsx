@@ -122,7 +122,10 @@ function loadStateFromStorage(): DemoAppState {
     if (raw) {
       const parsed = JSON.parse(raw);
       if (parsed && Array.isArray(parsed.patients)) {
-        return parsed;
+        return {
+          ...parsed,
+          language: parsed.language === 'hi' ? 'hi' : 'en',
+        };
       }
     }
   } catch (err) {

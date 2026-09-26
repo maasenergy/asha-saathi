@@ -144,7 +144,9 @@ export const BirthPlanModal: React.FC<BirthPlanModalProps> = ({
                 disabled={isRefreshing}
                 className="px-4 py-2 bg-[#B0306A] text-white rounded-xl text-xs font-bold"
               >
-                {isRefreshing ? 'उत्पन्न हो रहा है...' : 'अभी उत्पन्न करें (Generate Now)'}
+                {isRefreshing
+                  ? (language === 'hi' ? 'उत्पन्न हो रहा है...' : 'Generating...')
+                  : (language === 'hi' ? 'अभी उत्पन्न करें' : 'Generate Now')}
               </button>
             </div>
           ) : (
