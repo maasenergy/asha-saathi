@@ -1,0 +1,6 @@
+{
+  "name": "ASHA Saathi by Maas Doc",
+  "description": "Educational antenatal decision-support prototype turning spoken home-visit reports into clinical records, deterministic alerts, and SBAR handoffs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

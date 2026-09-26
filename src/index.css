@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Mukta', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Baloo 2', 'Mukta', system-ui, sans-serif;
+  --color-ink: #1E2A4A;
+  --color-asharose: #B0306A;
+  --color-lavender: #F6F2F8;
+  --color-leaf: #2F7D4F;
+  --color-amber: #D9950F;
+  --color-urgent: #C8102E;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Custom scrollbars for dashboard views */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(30, 42, 74, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(30, 42, 74, 0.25);
+}
