@@ -139,7 +139,7 @@ export async function draftHandoffWithGemini(
 
 export async function scanMothersWithGemini(
   mothers: MotherProfile[],
-  language: 'hi' | 'en' = 'hi'
+  language: 'hi' | 'en' = 'en'
 ): Promise<{ success: boolean; data: import('../types').AiMotherScanItem[]; error?: string; isAiUnavailable?: boolean }> {
   try {
     const res = await fetch('/api/gemini/scan-mothers', {
@@ -196,7 +196,7 @@ export async function scanMothersWithGemini(
  */
 export async function generateBirthPlanWithGemini(
   patientProfile: MotherProfile,
-  language: 'hi' | 'en' = 'hi'
+  language: 'hi' | 'en' = 'en'
 ): Promise<{ success: boolean; data?: BirthPlan; error?: string; isAiUnavailable?: boolean }> {
   try {
     const res = await fetch('/api/gemini/birth-plan', {

@@ -30,7 +30,7 @@ import { computePatientRiskState } from '../rules/trendEngine';
 import { scanMothersWithGemini, generateBirthPlanWithGemini } from '../services/geminiService';
 import { calculateProfileCompleteness, calculateWeeksAndEddFromLmp } from '../utils/ancCalculations';
 
-const DEMO_STORAGE_KEY = 'ASHA_SAATHI_DEMO_STORAGE_V2';
+const DEMO_STORAGE_KEY = 'ASHA_SAATHI_DEMO_STORAGE_V3';
 
 interface DemoContextType {
   state: DemoAppState;
@@ -212,8 +212,7 @@ export const DemoProvider: React.FC<{ children: React.ReactNode }> = ({ children
     updateStateAndBroadcast((prev) => ({
       ...prev,
       activeRole: role,
-      // Default to Hindi for ASHA and MOTHER roles, English for DOCTOR role
-      language: role === 'DOCTOR' ? 'en' : 'hi',
+      // Switching role keeps the user's chosen language (English unless they picked another)
     }));
   }, [updateStateAndBroadcast]);
 

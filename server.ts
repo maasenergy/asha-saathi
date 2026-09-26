@@ -78,7 +78,7 @@ app.get('/api/health', (req: Request, res: Response) => {
  */
 app.post('/api/gemini/extract-visit', async (req: Request, res: Response) => {
   try {
-    const { text, language = 'hi', patientContext } = req.body;
+    const { text, language = 'en', patientContext } = req.body;
 
     if (!text || typeof text !== 'string' || !text.trim()) {
       return res.status(400).json({
@@ -434,7 +434,7 @@ Generate structured SBAR (Situation, Background, Assessment, Recommendation) in 
  */
 app.post('/api/gemini/scan-mothers', async (req: Request, res: Response) => {
   try {
-    const { mothers, language = 'hi' } = req.body;
+    const { mothers, language = 'en' } = req.body;
 
     if (!Array.isArray(mothers) || mothers.length === 0) {
       return res.status(400).json({
@@ -572,7 +572,7 @@ app.post('/api/gemini/birth-plan', async (req: Request, res: Response) => {
       visitHistory = [],
       ruleFlags = [],
       trendFlags = [],
-      language = 'hi',
+      language = 'en',
     } = req.body;
 
     if (!patientProfile) {

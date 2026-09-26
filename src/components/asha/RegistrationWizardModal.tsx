@@ -41,7 +41,7 @@ export const RegistrationWizardModal: React.FC<RegistrationWizardModalProps> = (
   const [age, setAge] = useState(existingProfile ? String(existingProfile.age) : '22');
   const [village, setVillage] = useState(existingProfile?.village || 'Kasara');
   const [phone, setPhone] = useState(existingProfile?.phone || '');
-  const [motherLang, setMotherLang] = useState<'hi' | 'en' | 'mr'>(existingProfile?.language || 'hi');
+  const [motherLang, setMotherLang] = useState<'hi' | 'en' | 'mr'>(existingProfile?.language || 'en');
   const [heightCm, setHeightCm] = useState(existingProfile?.heightCm ? String(existingProfile.heightCm) : '');
   const [prePregnancyWeightKg, setPrePregnancyWeightKg] = useState(
     existingProfile?.prePregnancyWeightKg ? String(existingProfile.prePregnancyWeightKg) : ''

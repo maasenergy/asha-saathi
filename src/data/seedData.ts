@@ -970,7 +970,7 @@ export function getInitialAppState(): DemoAppState {
     selectedPatientId: 'pat-kavita-more',
     activeMotherId: 'pat-kavita-more',
     activeRole: 'ASHA',
-    language: 'hi',
+    language: 'en', // English is the default; Hindi only when the user chooses it
     lastUpdated: new Date().toISOString(),
   };
 }

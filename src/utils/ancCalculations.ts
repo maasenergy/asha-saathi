@@ -129,7 +129,7 @@ export function calculateProfileCompleteness(p: Partial<MotherProfile>): number 
  * Text-to-speech audio reader using the browser SpeechSynthesis API.
  * High-utility for illiterate or semi-literate mothers and ASHAs in rural field visits.
  */
-export function speakText(text: string, language: 'hi' | 'en' = 'hi') {
+export function speakText(text: string, language: 'hi' | 'en' = 'en') {
   if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
   try {
     window.speechSynthesis.cancel();
